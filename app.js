@@ -5,7 +5,6 @@
   const https = value => { try { const u = new URL(value); return u.protocol === 'https:' ? u.href : ''; } catch { return ''; } };
   const notice = text => { $('status').textContent = text; clearTimeout(notice.timer); notice.timer = setTimeout(() => $('status').textContent = '', 7000); };
   function connect(id, pending, url) { const valid = https(url); if (valid) { $(id).href = valid; $(id).hidden = false; if (pending) $(pending).hidden = true; } }
-  connect('rsvp-link', 'rsvp-pending', c.rsvpUrl);
   connect('upload-link', 'upload-pending', c.photoUploadUrl);
   connect('album-link', null, c.albumUrl);
   $('upload-note').textContent = c.photoUploadNote;

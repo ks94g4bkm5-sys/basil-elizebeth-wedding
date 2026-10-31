@@ -28,15 +28,6 @@ Empty destinations remain clearly labeled and do not pretend to submit anything.
 
 No domain purchase is required. GitHub Free supports Pages from public repositories. The published site limit is 1 GB, soft bandwidth limit 100 GB/month and soft build limit 10/hour for branch publishing. This small static invitation should normally stay far below those limits. Pages cannot process form submissions or store guest uploads by itself. [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits).
 
-## Free RSVP — Google Forms
-
-1. At Google Forms, create a form with name, attending yes/no, party size, and optional message. Keep required questions to a minimum.
-2. For guests without Google accounts, avoid settings that require sign-in, including limiting to one response and verified-email collection. Keep response summaries off so guests cannot see each other’s answers. Do not put file uploads in this RSVP form if you want a sign-in-free RSVP.
-3. Publish with responder access for anyone with the link. Copy its **responder** link, not its editing link, into `rsvpUrl`. Guests submit directly in Google Forms. Responses are available privately in your account; optionally link a private Google Sheet.
-4. Test from a signed-out browser. The website cannot check if a form was submitted and intentionally displays no fake confirmation.
-
-Basic personal Google Forms can be used without a paid Workspace plan. Account and service limits still apply; this is not a promise of unlimited submissions. [Google Forms publication and sharing settings](https://support.google.com/docs/answer/2839588?hl=en).
-
 ## Guest uploads — iCloud option
 
 The supplied iCloud album link is now connected to **Open our shared album**. Its contents and contributor permissions could not be verified using the available web tool. Test joining and uploading as a guest before sharing the invitation widely. Timezone confirmation and the RSVP destination are still pending.
@@ -55,7 +46,7 @@ Guests must sign in to a Google Account for file upload. Files are saved in the 
 
 ## Map and calendar
 
-The directions button opens the provided Google Maps link. There is no paid Maps API or API key. The `.ics` download and Google Calendar event link are generated locally and require no paid calendar API. Downloaded calendar files work with common calendar apps; Google Calendar requires the guest’s account to save. No analytics or automatic map embed is included.
+The directions button opens the provided Google Maps link. There is no paid Maps API or API key. The `.ics` download and Google Calendar event link are generated locally and require no paid calendar API. Downloaded calendar files work with common calendar apps; Google Calendar requires the guest’s account to save. The venue map uses the Google Maps share/embed feature with a directions fallback; no API key is stored.
 
 ## Before sending invitations
 
@@ -73,3 +64,14 @@ The original screen recording was recovered from the earlier chat, but browser a
 
 Code checks cover JavaScript syntax, configured links, countdown output and calendar generation. Visual layout and real third-party submissions still require the browser checks above. The site is published at https://ks94g4bkm5-sys.github.io/basil-elizebeth-wedding/. Live mobile layout, petal toggle and calendar download were checked. The watercolor theme refinement adds softer floral details, an airy name layout and an arched photo area.
 
+
+## Floral artwork
+
+The watercolor decoration was created with the built-in image generation tool and saved as `botanical-watercolor.webp`. Prompt: Delicate fine-art watercolor botanical corner decoration for a classic modern wedding invitation, transparent background; sage eucalyptus and olive-like leaves along the left edge, fine stems, ivory blossoms with champagne centers and tiny dusty blush buds; airy asymmetrical arrangement with open space, no text or people. It is decorative artwork, not a photograph of the couple or venue.
+
+## Current media and mobile styling
+
+The supplied couple illustration is saved as `couple-illustration.jpg` and displayed in the arched portrait area with a B&E caption. Falling petals now include sage green. Phone spacing is compact, with a single-column layout. `wedding-music.m4a` contains the extracted source audio; the website repeats its first 50 seconds and pauses when the page becomes hidden. Guests tap the music toggle to begin.
+
+
+Current update: RSVP removed; the invitation now displays the supplied welcome message, embedded church map, and tap-to-call contact numbers +91 9497882071 and +91 9633649586.

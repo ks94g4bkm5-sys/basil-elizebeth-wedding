@@ -4,7 +4,6 @@ window.WEDDING = {
   timeLabel: '9:00 am · IST',
   timezoneConfirmed: false, // India Standard Time assumed for the Kerala venue.
   mapUrl: 'https://maps.app.goo.gl/Cmon4UrSbdQrAPwX9',
-  rsvpUrl: '', // Published Google Forms responder link.
   photoUploadUrl: 'https://photos.icloud.com/shared/album/0c7GbI_8yMy2hk16hk2nYRDnw',
   photoUploadNote: 'Open our iCloud shared album to join and share your photographs. Apple sign-in and permission to contribute may be required. Guest upload access is not yet verified.',
   albumUrl: '', // Optional separate public, view-only album link.

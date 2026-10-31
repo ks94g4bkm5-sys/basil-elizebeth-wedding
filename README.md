@@ -1,6 +1,6 @@
 # Basil & Elizebeth — wedding invitation
 
-Selected design: **3 — Botanical Elegance**. Soft white, sage green and blush accents, delicate botanical borders, an arched invitation and restrained falling petals. Botanical artwork is bundled locally in `assets/botanical.svg`; it needs no paid image service. The church illustration from the theme concept is not included because it was illustrative rather than a verified image of the venue.
+Selected design: **3 — Botanical Elegance**. Soft white, sage green and blush accents, delicate botanical borders, an arched invitation and restrained falling petals. Botanical artwork is bundled locally in `botanical-watercolor.webp`; it needs no paid image service. The church illustration from the theme concept is not included because it was illustrative rather than a verified image of the venue.
 
 ## Preview and personalise
 
@@ -71,4 +71,5 @@ The directions button opens the provided Google Maps link. There is no paid Maps
 
 The original screen recording was recovered from the earlier chat, but browser approval was declined before frames could be inspected. No separate still image was available. This implementation follows the requested white/pink, falling-petal style and earlier chat description; a close visual match to the recording has **not** been verified. No audio or photographs were extracted from the recording.
 
-Code checks cover JavaScript syntax, configured links, countdown output and calendar generation. Visual layout and real third-party submissions still require the browser checks above. The site has not been deployed to a GitHub account.
+Code checks cover JavaScript syntax, configured links, countdown output and calendar generation. Visual layout and real third-party submissions still require the browser checks above. The site is published at https://ks94g4bkm5-sys.github.io/basil-elizebeth-wedding/. Live mobile layout, petal toggle and calendar download were checked. The watercolor theme refinement adds softer floral details, an airy name layout and an arched photo area.
+

@@ -8,8 +8,8 @@ window.WEDDING = {
   photoUploadUrl: 'https://photos.icloud.com/shared/album/0c7GbI_8yMy2hk16hk2nYRDnw',
   photoUploadNote: 'Open our iCloud shared album to join and share your photographs. Apple sign-in and permission to contribute may be required. Guest upload access is not yet verified.',
   albumUrl: '', // Optional separate public, view-only album link.
-  portrait: '', // Example: assets/couple.jpg
-  portraitAlt: 'Basil Kadalangal and Elizebeth Jenefer',
+  portrait: 'couple-illustration.jpg', // Example: assets/couple.jpg
+  portraitAlt: 'Illustrated portrait of Basil and Elizebeth holding hands',
   music: 'wedding-music.m4a', // Example: assets/music.mp3 — use a track you may share publicly.
   gallery: [] // Example: [{src:'assets/photo-1.jpg', alt:'Our engagement'}]
 };

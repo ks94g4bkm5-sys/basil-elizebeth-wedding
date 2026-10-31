@@ -13,7 +13,7 @@
   $('ceremony-time').textContent = c.timeLabel;
   $('timezone-note').textContent = c.timezoneConfirmed ? '' : 'Time zone provisional: India Standard Time (UTC+5:30). Awaiting confirmation.';
   function image(src, alt) { const img = new Image(); img.alt = alt; img.loading = 'lazy'; img.src = src; return img; }
-  if (c.portrait) { const img = image(c.portrait, c.portraitAlt); img.onload = () => $('portrait').replaceChildren(img); img.onerror = () => notice('The couple’s photograph could not be loaded.'); }
+  if (c.portrait) { const img = image(c.portrait, c.portraitAlt); img.onload = () => { const caption=document.createElement('span');caption.className='portrait-caption';caption.textContent='B & E';$('portrait').replaceChildren(img,caption); }; img.onerror = () => notice('The couple’s photograph could not be loaded.'); }
   c.gallery.forEach(p => { const img = image(p.src,p.alt); img.onerror = () => img.remove(); $('gallery').append(img); });
   const start = new Date(c.start);
   function countdown() {

@@ -46,6 +46,7 @@
   motion(); $('motion').onclick=()=>{paused=!paused;motion();}; reduced.addEventListener('change',e=>{paused=e.matches;motion();});
   const audio=$('audio'), music=$('music');
   audio.loop=true;
+  let startOnInteraction=Boolean(c.music);
   let resumeOnVisible=false;
   audio.addEventListener('timeupdate',()=>{
     if(audio.currentTime>=50) audio.currentTime=0;
@@ -54,8 +55,18 @@
     if(document.hidden){resumeOnVisible=!audio.paused;audio.pause();}
     else if(resumeOnVisible){resumeOnVisible=false;try{await audio.play();}catch{notice('Tap the music button to resume.');}}
   });
-  if (c.music) { audio.src=c.music;music.textContent='♫ Music off'; } else { music.setAttribute('aria-disabled','true'); }
+  if (c.music) { audio.src=c.music;audio.preload='auto';music.textContent='♫ Starting music'; } else { music.setAttribute('aria-disabled','true'); }
   const syncMusic=()=>{music.textContent=audio.paused?'♫ Music off':'♫ Music on';music.setAttribute('aria-pressed',String(!audio.paused));};
   audio.addEventListener('play',syncMusic);audio.addEventListener('pause',syncMusic);
-  music.onclick=async()=>{if(!c.music){notice('Our music track is still to be added.');return;}if(!audio.paused){audio.pause();return;}try{await audio.play();}catch{notice('Music could not play. Please check the audio file and try again.');}};
+  music.onclick=async()=>{startOnInteraction=false;if(!c.music){notice('Our music track is still to be added.');return;}if(!audio.paused){audio.pause();return;}try{await audio.play();}catch{notice('Music could not play. Please check the audio file and try again.');}};
+  async function startMusic(){
+    if(!startOnInteraction || document.hidden)return;
+    startOnInteraction=false;
+    try{await audio.play();}
+    catch{startOnInteraction=true;music.textContent='♫ Tap for music';music.setAttribute('aria-pressed','false');}
+  }
+  document.addEventListener('pointerdown',event=>{if(!event.target.closest('#music'))startMusic();});
+  document.addEventListener('click',event=>{if(!event.target.closest('#music'))startMusic();});
+  document.addEventListener('keydown',event=>{if(!event.repeat && !event.target.closest('#music'))startMusic();});
+  if(c.music)startMusic();
 })();

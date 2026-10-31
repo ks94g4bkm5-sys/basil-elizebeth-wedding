@@ -10,6 +10,7 @@ window.WEDDING = {
   albumUrl: '', // Optional separate public, view-only album link.
   portrait: '', // Example: assets/couple.jpg
   portraitAlt: 'Basil Kadalangal and Elizebeth Jenefer',
-  music: '', // Example: assets/music.mp3 — use a track you may share publicly.
+  music: 'wedding-music.m4a', // Example: assets/music.mp3 — use a track you may share publicly.
   gallery: [] // Example: [{src:'assets/photo-1.jpg', alt:'Our engagement'}]
 };
+

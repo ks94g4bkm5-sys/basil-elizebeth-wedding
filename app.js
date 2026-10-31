@@ -46,6 +46,15 @@
   function motion() { document.body.classList.toggle('paused',paused);$('motion').textContent=paused?'Petals off':'Petals on';$('motion').setAttribute('aria-pressed',String(paused));$('motion').setAttribute('aria-label',paused?'Resume falling petals':'Pause falling petals'); }
   motion(); $('motion').onclick=()=>{paused=!paused;motion();}; reduced.addEventListener('change',e=>{paused=e.matches;motion();});
   const audio=$('audio'), music=$('music');
+  audio.loop=true;
+  let resumeOnVisible=false;
+  audio.addEventListener('timeupdate',()=>{
+    if(audio.currentTime>=50) audio.currentTime=0;
+  });
+  document.addEventListener('visibilitychange',async()=>{
+    if(document.hidden){resumeOnVisible=!audio.paused;audio.pause();}
+    else if(resumeOnVisible){resumeOnVisible=false;try{await audio.play();}catch{notice('Tap the music button to resume.');}}
+  });
   if (c.music) { audio.src=c.music;music.textContent='♫ Music off'; } else { music.setAttribute('aria-disabled','true'); }
   const syncMusic=()=>{music.textContent=audio.paused?'♫ Music off':'♫ Music on';music.setAttribute('aria-pressed',String(!audio.paused));};
   audio.addEventListener('play',syncMusic);audio.addEventListener('pause',syncMusic);

@@ -42,14 +42,13 @@
   $('calendar').addEventListener('click', () => downloadCalendar({uid:'basil-elizebeth-20261123',start,title,location,description}));
   const evening = {
     uid: 'basil-elizebeth-evening-20261123',
-    start: new Date('2026-11-23T16:00:00+05:30'),
-    end: new Date('2026-11-23T20:00:00+05:30'),
+    start: new Date('2026-11-23T19:00:00+05:30'),
     title: 'Evening get-together · Basil & Elizebeth',
     location: 'Thrikkariyoor, Kerala',
-    description: '4:00–8:00 pm IST. Directions: https://maps.app.goo.gl/A6AuybfqUTmTxLDo8'
+    description: 'Starts at 7:00 pm IST. Directions: https://maps.app.goo.gl/A6AuybfqUTmTxLDo8'
   };
   const eveningGoogle = new URL('https://calendar.google.com/calendar/render');
-  eveningGoogle.search = new URLSearchParams({action:'TEMPLATE',text:evening.title,dates:utc(evening.start)+'/'+utc(evening.end),location:evening.location,details:evening.description}).toString();
+  eveningGoogle.search = new URLSearchParams({action:'TEMPLATE',text:evening.title,dates:utc(evening.start)+'/'+utc(evening.start),location:evening.location,details:evening.description}).toString();
   $('evening-google-calendar').href = eveningGoogle.href;
   $('evening-calendar').addEventListener('click', () => downloadCalendar(evening));
   $('instagram-copy').addEventListener('click', async () => {
@@ -92,3 +91,5 @@
   document.addEventListener('keydown',event=>{if(!event.repeat && !event.target.closest('#music'))startMusic();});
   if(c.music)startMusic();
 })();
+
+

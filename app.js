@@ -33,11 +33,33 @@
   $('google-calendar').href = google.href;
   const escapeICS = s => s.replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
   function foldICS(line) { let rows=[],row='',bytes=0; for (const char of line) { const size = new TextEncoder().encode(char).length; if (bytes+size>75) {rows.push(row);row=' ';bytes=1;} row+=char;bytes+=size; } return [...rows,row].join('\r\n'); }
-  $('calendar').addEventListener('click', () => {
-    const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Basil and Elizebeth//Wedding Invitation//EN','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:basil-elizebeth-20261123@wedding-invitation','DTSTAMP:'+utc(new Date()),'DTSTART:'+utc(start),'DURATION:PT0S','SUMMARY:'+escapeICS(title),'LOCATION:'+escapeICS(location),'DESCRIPTION:'+escapeICS(description),'END:VEVENT','END:VCALENDAR'];
+  function downloadCalendar({uid, start, end, title, location, description}) {
+    const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Basil and Elizebeth//Wedding Invitation//EN','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:'+uid+'@wedding-invitation','DTSTAMP:'+utc(new Date()),'DTSTART:'+utc(start),end ? 'DTEND:'+utc(end) : 'DURATION:PT0S','SUMMARY:'+escapeICS(title),'LOCATION:'+escapeICS(location),'DESCRIPTION:'+escapeICS(description),'END:VEVENT','END:VCALENDAR'];
     const url = URL.createObjectURL(new Blob([lines.map(foldICS).join('\r\n')+'\r\n'],{type:'text/calendar;charset=utf-8'}));
-    const a=document.createElement('a'); a.href=url;a.download='basil-elizebeth-wedding.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);
-    notice('Calendar downloaded. Open the file to save the ceremony start.');
+    const a=document.createElement('a'); a.href=url;a.download=uid+'.ics';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);
+    notice('Calendar downloaded. Open the file to save the event.');
+  }
+  $('calendar').addEventListener('click', () => downloadCalendar({uid:'basil-elizebeth-20261123',start,title,location,description}));
+  const evening = {
+    uid: 'basil-elizebeth-evening-20261123',
+    start: new Date('2026-11-23T16:00:00+05:30'),
+    end: new Date('2026-11-23T20:00:00+05:30'),
+    title: 'Evening get-together · Basil & Elizebeth',
+    location: 'Thrikkariyoor, Kerala',
+    description: '4:00–8:00 pm IST. Directions: https://maps.app.goo.gl/A6AuybfqUTmTxLDo8'
+  };
+  const eveningGoogle = new URL('https://calendar.google.com/calendar/render');
+  eveningGoogle.search = new URLSearchParams({action:'TEMPLATE',text:evening.title,dates:utc(evening.start)+'/'+utc(evening.end),location:evening.location,details:evening.description}).toString();
+  $('evening-google-calendar').href = eveningGoogle.href;
+  $('evening-calendar').addEventListener('click', () => downloadCalendar(evening));
+  $('instagram-copy').addEventListener('click', async () => {
+    const invite = 'https://ks94g4bkm5-sys.github.io/basil-elizebeth-wedding/?invite=3';
+    try {
+      await navigator.clipboard.writeText(invite);
+      notice('Link copied. Paste it into Instagram.');
+    } catch {
+      window.prompt('Copy this link for Instagram', invite);
+    }
   });
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let paused = reduced.matches;
